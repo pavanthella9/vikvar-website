@@ -12,6 +12,7 @@ import {
   Globe2,
   Menu,
   Network,
+  Search,
   Users,
   X,
 } from "lucide-react";
@@ -187,9 +188,7 @@ export function SiteHeader() {
                         key={item.href}
                         href={item.href}
                         className={`group flex gap-4 rounded-xl p-4 transition ${
-                          active
-                            ? "bg-blue-50"
-                            : "hover:bg-slate-50"
+                          active ? "bg-blue-50" : "hover:bg-slate-50"
                         }`}
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700 transition group-hover:bg-blue-100">
@@ -228,6 +227,18 @@ export function SiteHeader() {
               </Link>
             );
           })}
+
+          <Link
+            href="/search"
+            aria-label="Search website"
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-lg transition ${
+              pathname === "/search"
+                ? "bg-blue-50 text-blue-800"
+                : "text-slate-700 hover:bg-slate-100 hover:text-slate-950"
+            }`}
+          >
+            <Search className="h-5 w-5" aria-hidden="true" />
+          </Link>
         </nav>
 
         <div className="hidden lg:block">
@@ -321,6 +332,18 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+
+            <Link
+              href="/search"
+              className={`flex items-center gap-3 rounded-lg px-4 py-3 font-semibold ${
+                pathname === "/search"
+                  ? "bg-blue-50 text-blue-800"
+                  : "text-slate-800 hover:bg-slate-100"
+              }`}
+            >
+              <Search className="h-5 w-5 text-blue-700" aria-hidden="true" />
+              Search website
+            </Link>
 
             <div className="pt-3">
               <Link
