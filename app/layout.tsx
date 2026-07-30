@@ -1,35 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Vikvar Technologies",
-    template: "%s | Vikvar Technologies",
-  },
+  title: "Vikvar Technologies | IT Recruiting & Staff Augmentation",
   description:
-    "Vikvar Technologies delivers technology consulting, cloud, DevOps, data, digital engineering, and workforce solutions.",
-  metadataBase: new URL("https://vikvartech.com"),
-  openGraph: {
-    title: "Vikvar Technologies",
-    description:
-      "Technology consulting, digital engineering, cloud, DevOps, data, and workforce solutions.",
-    type: "website",
-    url: "https://vikvartech.com",
-    siteName: "Vikvar Technologies",
-  },
+    "Vikvar Technologies provides IT recruiting, staff augmentation, technology consulting, application development, offshore development, and cloud services.",
 };
 
 export default function RootLayout({
@@ -39,8 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className={inter.variable}>
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
