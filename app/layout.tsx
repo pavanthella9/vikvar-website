@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SkipToContent } from "@/components/ui/SkipToContent";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 const siteUrl = "https://vikvartech.com";
@@ -34,9 +36,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Vikvar Technologies", url: siteUrl }],
   creator: "Vikvar Technologies",
   publisher: "Vikvar Technologies",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -64,6 +63,13 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#071a3d",
+  colorScheme: "light",
 };
 
 const organizationSchema = {
@@ -113,8 +119,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <SkipToContent />
         <SiteHeader />
-        {children}
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
         <SiteFooter />
 
         <script
