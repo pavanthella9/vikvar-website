@@ -8,6 +8,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import { ContactForm } from "@/components/contact/ContactForm";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -28,7 +29,6 @@ export const metadata: Metadata = {
 
 const offices = [
   {
-    country: "United States",
     label: "USA Headquarters",
     company: "VIKVAR Technologies LLC",
     address: [
@@ -42,7 +42,6 @@ const offices = [
     emailHref: "mailto:info@vikvartech.com",
   },
   {
-    country: "India",
     label: "India Office",
     company: "VIKVAR Technologies",
     address: [
@@ -57,15 +56,6 @@ const offices = [
     email: "info@vikvartech.com",
     emailHref: "mailto:info@vikvartech.com",
   },
-] as const;
-
-const services = [
-  "IT Recruiting",
-  "Staff Augmentation",
-  "Technology Consulting",
-  "Application Development",
-  "Offshore Development",
-  "Cloud & DevOps",
 ] as const;
 
 const regions = [
@@ -118,6 +108,20 @@ export default function ContactPage() {
       <section className="py-20 sm:py-24">
         <Container>
           <SectionHeading
+            eyebrow="Business Enquiries"
+            title="Tell us what your organization needs"
+            description="Share your requirement and we will help identify the right recruiting, consulting, engineering, or delivery approach."
+          />
+
+          <div className="mt-12">
+            <ContactForm />
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-slate-50 py-20 sm:py-24">
+        <Container>
+          <SectionHeading
             eyebrow="Our Offices"
             title="Connect with Vikvar Technologies"
             description="Our teams support clients and technology professionals across multiple international markets."
@@ -145,10 +149,7 @@ export default function ContactPage() {
 
                 <div className="mt-7 space-y-6">
                   <div className="flex gap-4">
-                    <MapPin
-                      className="mt-1 h-5 w-5 shrink-0 text-blue-700"
-                      aria-hidden="true"
-                    />
+                    <MapPin className="mt-1 h-5 w-5 shrink-0 text-blue-700" aria-hidden="true" />
                     <address className="not-italic leading-7 text-slate-600">
                       {office.address.map((line) => (
                         <span key={line} className="block">
@@ -159,36 +160,20 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex gap-4">
-                    <Phone
-                      className="mt-1 h-5 w-5 shrink-0 text-blue-700"
-                      aria-hidden="true"
-                    />
+                    <Phone className="mt-1 h-5 w-5 shrink-0 text-blue-700" aria-hidden="true" />
                     <div>
-                      <p className="text-sm font-semibold text-slate-950">
-                        Phone
-                      </p>
-                      <a
-                        href={office.phoneHref}
-                        className="mt-1 inline-block text-slate-600 transition hover:text-blue-700"
-                      >
+                      <p className="text-sm font-semibold text-slate-950">Phone</p>
+                      <a href={office.phoneHref} className="mt-1 inline-block text-slate-600 transition hover:text-blue-700">
                         {office.phone}
                       </a>
                     </div>
                   </div>
 
                   <div className="flex gap-4">
-                    <Mail
-                      className="mt-1 h-5 w-5 shrink-0 text-blue-700"
-                      aria-hidden="true"
-                    />
+                    <Mail className="mt-1 h-5 w-5 shrink-0 text-blue-700" aria-hidden="true" />
                     <div>
-                      <p className="text-sm font-semibold text-slate-950">
-                        General enquiries
-                      </p>
-                      <a
-                        href={office.emailHref}
-                        className="mt-1 inline-block text-slate-600 transition hover:text-blue-700"
-                      >
+                      <p className="text-sm font-semibold text-slate-950">General enquiries</p>
+                      <a href={office.emailHref} className="mt-1 inline-block text-slate-600 transition hover:text-blue-700">
                         {office.email}
                       </a>
                     </div>
@@ -200,48 +185,33 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="bg-slate-50 py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <div className="grid gap-8 lg:grid-cols-3">
             <article className="rounded-2xl border border-slate-200 bg-white p-7">
-              <BriefcaseBusiness
-                className="h-7 w-7 text-blue-700"
-                aria-hidden="true"
-              />
+              <BriefcaseBusiness className="h-7 w-7 text-blue-700" aria-hidden="true" />
               <h2 className="mt-5 text-xl font-bold text-slate-950">Careers</h2>
               <p className="mt-3 leading-7 text-slate-600">
-                Explore opportunities or send your profile to our recruitment
-                team.
+                Explore opportunities or send your profile to our recruitment team.
               </p>
-              <a
-                href="mailto:hr@vikvartech.com"
-                className="mt-5 inline-flex font-semibold text-blue-700 transition hover:text-blue-900"
-              >
+              <a href="mailto:hr@vikvartech.com" className="mt-5 inline-flex font-semibold text-blue-700 transition hover:text-blue-900">
                 hr@vikvartech.com
               </a>
             </article>
 
             <article className="rounded-2xl border border-slate-200 bg-white p-7">
               <Clock3 className="h-7 w-7 text-blue-700" aria-hidden="true" />
-              <h2 className="mt-5 text-xl font-bold text-slate-950">
-                Business Hours
-              </h2>
+              <h2 className="mt-5 text-xl font-bold text-slate-950">Business Hours</h2>
               <p className="mt-3 leading-7 text-slate-600">
                 Monday to Friday
                 <br />
                 9:00 AM – 6:00 PM
               </p>
-              <p className="mt-4 text-sm leading-6 text-slate-500">
-                Enquiries received outside business hours will be reviewed on
-                the next working day.
-              </p>
             </article>
 
             <article className="rounded-2xl border border-slate-200 bg-white p-7">
               <Globe2 className="h-7 w-7 text-blue-700" aria-hidden="true" />
-              <h2 className="mt-5 text-xl font-bold text-slate-950">
-                Global Presence
-              </h2>
+              <h2 className="mt-5 text-xl font-bold text-slate-950">Global Presence</h2>
               <p className="mt-3 leading-7 text-slate-600">
                 Supporting clients and talent across:
               </p>
@@ -249,46 +219,6 @@ export default function ContactPage() {
                 {regions.join(" · ")}
               </p>
             </article>
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-20 sm:py-24">
-        <Container>
-          <div className="grid gap-10 rounded-3xl bg-[#071a3d] px-7 py-12 text-white lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-12">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-300">
-                Business Enquiries
-              </p>
-              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-                Tell us what your organization needs.
-              </h2>
-              <p className="mt-5 max-w-2xl leading-8 text-slate-300">
-                We support employers and business leaders across recruiting,
-                workforce scaling, consulting, engineering, offshore delivery,
-                cloud, and DevOps.
-              </p>
-              <p className="mt-6 text-sm leading-7 text-slate-400">
-                Services: {services.join(" · ")}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <a
-                href="mailto:info@vikvartech.com?subject=Business%20Enquiry"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold transition hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              >
-                <Mail className="h-5 w-5" aria-hidden="true" />
-                Send a business enquiry
-              </a>
-              <a
-                href="tel:+16094234288"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 py-3 font-semibold transition hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-blue-300"
-              >
-                <Phone className="h-5 w-5" aria-hidden="true" />
-                Call Vikvar Technologies
-              </a>
-            </div>
           </div>
         </Container>
       </section>
