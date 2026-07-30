@@ -188,6 +188,7 @@ export default function HomePage() {
 
             <div
               data-surface-card
+              data-theme="dark"
               className="rounded-3xl border border-white/15 bg-white/10 p-7 shadow-2xl backdrop-blur sm:p-9"
             >
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-200">
