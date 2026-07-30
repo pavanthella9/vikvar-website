@@ -1,50 +1,71 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
-  ArrowRight,
   BriefcaseBusiness,
   Building2,
-  Check,
+  Clock3,
   Globe2,
   Mail,
   MapPin,
-  MessageSquareText,
-  Users,
+  Phone,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Contact Vikvar Technologies",
+  title: "Contact Us",
   description:
-    "Contact Vikvar Technologies for IT recruiting, staff augmentation, technology consulting, application development, offshore development, cloud, DevOps, careers, and partnership enquiries.",
+    "Contact Vikvar Technologies for IT recruiting, staff augmentation, technology consulting, application development, offshore development, cloud, and DevOps services.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Vikvar Technologies",
+    description:
+      "Connect with Vikvar Technologies in the United States and India for technology talent, consulting, engineering, and delivery services.",
+    url: "/contact",
+  },
 };
 
-const enquiryTypes = [
+const offices = [
   {
-    icon: Users,
-    title: "Hire IT Talent",
-    description:
-      "Share your role, required skills, experience level, location, engagement type, and expected timeline.",
+    country: "United States",
+    label: "USA Headquarters",
+    company: "VIKVAR Technologies LLC",
+    address: [
+      "5900 Balcones Drive, Suite 100",
+      "Austin, TX 78731",
+      "United States",
+    ],
+    phone: "+1 (609) 423-4288",
+    phoneHref: "tel:+16094234288",
+    email: "info@vikvartech.com",
+    emailHref: "mailto:info@vikvartech.com",
   },
   {
-    icon: BriefcaseBusiness,
-    title: "Staff Augmentation",
-    description:
-      "Discuss individual specialists, project teams, contract hiring, contract-to-hire, or scalable workforce support.",
+    country: "India",
+    label: "India Office",
+    company: "VIKVAR Technologies",
+    address: [
+      "3rd Floor, KNR Square",
+      "Opp. The Platina",
+      "Gachibowli, Kondapur",
+      "Hyderabad, Telangana 500032",
+      "India",
+    ],
+    phone: "+1 (609) 423-4288",
+    phoneHref: "tel:+16094234288",
+    email: "info@vikvartech.com",
+    emailHref: "mailto:info@vikvartech.com",
   },
-  {
-    icon: Building2,
-    title: "Technology Services",
-    description:
-      "Tell us about your consulting, application development, modernization, offshore delivery, cloud, or DevOps initiative.",
-  },
-  {
-    icon: MessageSquareText,
-    title: "Careers",
-    description:
-      "Submit your profile with your primary skills, total experience, location, notice period, and preferred role.",
-  },
+] as const;
+
+const services = [
+  "IT Recruiting",
+  "Staff Augmentation",
+  "Technology Consulting",
+  "Application Development",
+  "Offshore Development",
+  "Cloud & DevOps",
 ] as const;
 
 const regions = [
@@ -55,230 +76,219 @@ const regions = [
   "Malaysia",
 ] as const;
 
-const checklist = [
-  "Your name, company, and professional email",
-  "The service or opportunity you are enquiring about",
-  "Required skills, scope, or business objective",
-  "Preferred location or delivery model",
-  "Expected start date or project timeline",
-  "Best contact method and suitable time to respond",
-] as const;
-
 export default function ContactPage() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-[#071a3d] py-20 text-white sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(21,101,255,0.5),transparent_38%)]" />
+      <section className="relative overflow-hidden bg-[#071a3d] py-20 text-white sm:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.24),transparent_38%)]" />
         <Container className="relative">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-300">
-                Contact Vikvar
-              </p>
-              <h1 className="mt-5 max-w-4xl text-5xl font-bold tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-                Start a conversation about talent, technology, or delivery.
-              </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                Tell us what you need, where you need it, and when you want to begin. Our team will
-                review your enquiry and connect you with the right recruiting, consulting, or
-                delivery specialist.
-              </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="mailto:info@vikvartech.com"
-                  className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[#1565ff] px-7 font-bold text-white transition hover:-translate-y-0.5 hover:bg-blue-500"
-                >
-                  Email Vikvar <ArrowRight size={18} />
-                </a>
-                <Link
-                  href="/services/it-recruiting"
-                  className="inline-flex min-h-14 items-center justify-center rounded-xl border border-white/25 px-7 font-bold text-white transition hover:bg-white/10"
-                >
-                  Explore Services
-                </Link>
-              </div>
-            </div>
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-blue-300">
+              Contact Vikvar Technologies
+            </p>
+            <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Let&apos;s build your next technology team or solution.
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Speak with our team about technology recruiting, staff
+              augmentation, consulting, application engineering, offshore
+              delivery, cloud, or DevOps requirements.
+            </p>
 
-            <div className="rounded-[28px] border border-white/15 bg-white/8 p-7 backdrop-blur sm:p-9">
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-blue-200">
-                Direct contact
-              </p>
-              <div className="mt-7 space-y-6">
-                <a
-                  href="mailto:info@vikvartech.com"
-                  className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10"
-                >
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-400 text-[#071a3d]">
-                    <Mail size={21} />
-                  </span>
-                  <span>
-                    <span className="block text-sm text-slate-300">Email</span>
-                    <span className="mt-1 block font-bold text-white">info@vikvartech.com</span>
-                  </span>
-                </a>
-                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-400 text-[#071a3d]">
-                    <Globe2 size={21} />
-                  </span>
-                  <span>
-                    <span className="block text-sm text-slate-300">Service reach</span>
-                    <span className="mt-1 block font-bold text-white">
-                      USA, India, UAE, Singapore & Malaysia
-                    </span>
-                  </span>
-                </div>
-                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-400 text-[#071a3d]">
-                    <MapPin size={21} />
-                  </span>
-                  <span>
-                    <span className="block text-sm text-slate-300">Delivery options</span>
-                    <span className="mt-1 block font-bold text-white">
-                      Onsite, remote, hybrid & offshore
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-white py-20 sm:py-28">
-        <Container>
-          <SectionHeading
-            eyebrow="How can we help?"
-            title="Choose the conversation that best matches your requirement."
-            description="Clear initial information helps us route your enquiry quickly and respond with relevant next steps."
-            align="center"
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {enquiryTypes.map(({ icon: Icon, title, description }) => (
-              <article
-                key={title}
-                className="rounded-2xl border border-slate-200 p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5"
-              >
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-blue-700">
-                  <Icon size={23} />
-                </span>
-                <h2 className="mt-5 text-xl font-bold text-[#081a3a]">{title}</h2>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-slate-50 py-20 sm:py-28">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
-            <div>
-              <SectionHeading
-                eyebrow="Send an enquiry"
-                title="Share the information our team needs to respond effectively."
-                description="This first version uses your official email channel so every enquiry reaches the business directly without introducing an unconfigured backend or third-party form service."
-              />
-              <div className="mt-8 space-y-4">
-                {checklist.map((item) => (
-                  <div key={item} className="flex gap-3">
-                    <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-blue-100 text-blue-700">
-                      <Check size={15} strokeWidth={3} />
-                    </span>
-                    <p className="text-sm font-semibold leading-6 text-[#081a3a]">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm sm:p-9">
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">
-                Email template
-              </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em] text-[#081a3a]">
-                Contact our business team
-              </h2>
-              <p className="mt-4 leading-7 text-slate-600">
-                Use the button below to open a prepared email. Add your specific requirement,
-                company information, timeline, and preferred contact details before sending.
-              </p>
-
-              <div className="mt-7 rounded-2xl bg-slate-50 p-6">
-                <p className="text-sm font-bold text-[#081a3a]">Suggested subject</p>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Service enquiry — Company name — Required service
-                </p>
-                <p className="mt-5 text-sm font-bold text-[#081a3a]">Suggested message</p>
-                <p className="mt-2 whitespace-pre-line text-sm leading-6 text-slate-600">
-                  {`Hello Vikvar Team,
-
-I am contacting you regarding:
-Company:
-Required service:
-Skills or project scope:
-Location / delivery preference:
-Expected timeline:
-Best contact number:
-
-Please contact me to discuss the next steps.`}
-                </p>
-              </div>
-
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <a
-                href="mailto:info@vikvartech.com?subject=Service%20Enquiry%20-%20Vikvar%20Technologies&body=Hello%20Vikvar%20Team%2C%0A%0AI%20am%20contacting%20you%20regarding%3A%0ACompany%3A%0ARequired%20service%3A%0ASkills%20or%20project%20scope%3A%0ALocation%20%2F%20delivery%20preference%3A%0AExpected%20timeline%3A%0ABest%20contact%20number%3A%0A%0APlease%20contact%20me%20to%20discuss%20the%20next%20steps."
-                className="mt-7 inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#1565ff] px-7 font-bold text-white transition hover:-translate-y-0.5 hover:bg-blue-500"
+                href="mailto:info@vikvartech.com"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
-                Compose Email <Mail size={18} />
+                <Mail className="h-5 w-5" aria-hidden="true" />
+                Email our team
+              </a>
+              <a
+                href="tel:+16094234288"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                +1 (609) 423-4288
               </a>
             </div>
           </div>
         </Container>
       </section>
 
-      <section className="bg-white py-20 sm:py-28">
+      <section className="py-20 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow="Global delivery"
-            title="Supporting clients and professionals across key technology markets."
-            description="Our service model can combine local client engagement with remote, hybrid, and offshore delivery capability."
-            align="center"
+            eyebrow="Our Offices"
+            title="Connect with Vikvar Technologies"
+            description="Our teams support clients and technology professionals across multiple international markets."
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {regions.map((region) => (
-              <div
-                key={region}
-                className="rounded-2xl border border-slate-200 bg-white p-6 text-center"
+
+          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+            {offices.map((office) => (
+              <article
+                key={office.label}
+                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm sm:p-9"
               >
-                <span className="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-[#081a3a] text-white">
-                  <Globe2 size={20} />
-                </span>
-                <p className="mt-4 font-bold text-[#081a3a]">{region}</p>
-              </div>
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-700">
+                      {office.label}
+                    </p>
+                    <h2 className="mt-3 text-2xl font-bold text-slate-950">
+                      {office.company}
+                    </h2>
+                  </div>
+                  <div className="rounded-xl bg-blue-50 p-3 text-blue-700">
+                    <Building2 className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                </div>
+
+                <div className="mt-7 space-y-6">
+                  <div className="flex gap-4">
+                    <MapPin
+                      className="mt-1 h-5 w-5 shrink-0 text-blue-700"
+                      aria-hidden="true"
+                    />
+                    <address className="not-italic leading-7 text-slate-600">
+                      {office.address.map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </address>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <Phone
+                      className="mt-1 h-5 w-5 shrink-0 text-blue-700"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-950">
+                        Phone
+                      </p>
+                      <a
+                        href={office.phoneHref}
+                        className="mt-1 inline-block text-slate-600 transition hover:text-blue-700"
+                      >
+                        {office.phone}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <Mail
+                      className="mt-1 h-5 w-5 shrink-0 text-blue-700"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-950">
+                        General enquiries
+                      </p>
+                      <a
+                        href={office.emailHref}
+                        className="mt-1 inline-block text-slate-600 transition hover:text-blue-700"
+                      >
+                        {office.email}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="bg-[#071a3d] py-20 text-white sm:py-24">
+      <section className="bg-slate-50 py-20 sm:py-24">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-cyan-300">
-                Ready to begin?
+          <div className="grid gap-8 lg:grid-cols-3">
+            <article className="rounded-2xl border border-slate-200 bg-white p-7">
+              <BriefcaseBusiness
+                className="h-7 w-7 text-blue-700"
+                aria-hidden="true"
+              />
+              <h2 className="mt-5 text-xl font-bold text-slate-950">Careers</h2>
+              <p className="mt-3 leading-7 text-slate-600">
+                Explore opportunities or send your profile to our recruitment
+                team.
               </p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-bold tracking-[-0.035em] sm:text-5xl">
-                Let&apos;s discuss the people, technology, and delivery model your business needs.
+              <a
+                href="mailto:hr@vikvartech.com"
+                className="mt-5 inline-flex font-semibold text-blue-700 transition hover:text-blue-900"
+              >
+                hr@vikvartech.com
+              </a>
+            </article>
+
+            <article className="rounded-2xl border border-slate-200 bg-white p-7">
+              <Clock3 className="h-7 w-7 text-blue-700" aria-hidden="true" />
+              <h2 className="mt-5 text-xl font-bold text-slate-950">
+                Business Hours
               </h2>
-              <p className="mt-5 max-w-2xl leading-7 text-slate-300">
-                Send a concise overview of your requirement and our team will identify the most
-                relevant next step.
+              <p className="mt-3 leading-7 text-slate-600">
+                Monday to Friday
+                <br />
+                9:00 AM – 6:00 PM
+              </p>
+              <p className="mt-4 text-sm leading-6 text-slate-500">
+                Enquiries received outside business hours will be reviewed on
+                the next working day.
+              </p>
+            </article>
+
+            <article className="rounded-2xl border border-slate-200 bg-white p-7">
+              <Globe2 className="h-7 w-7 text-blue-700" aria-hidden="true" />
+              <h2 className="mt-5 text-xl font-bold text-slate-950">
+                Global Presence
+              </h2>
+              <p className="mt-3 leading-7 text-slate-600">
+                Supporting clients and talent across:
+              </p>
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                {regions.join(" · ")}
+              </p>
+            </article>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 sm:py-24">
+        <Container>
+          <div className="grid gap-10 rounded-3xl bg-[#071a3d] px-7 py-12 text-white lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-12">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-300">
+                Business Enquiries
+              </p>
+              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+                Tell us what your organization needs.
+              </h2>
+              <p className="mt-5 max-w-2xl leading-8 text-slate-300">
+                We support employers and business leaders across recruiting,
+                workforce scaling, consulting, engineering, offshore delivery,
+                cloud, and DevOps.
+              </p>
+              <p className="mt-6 text-sm leading-7 text-slate-400">
+                Services: {services.join(" · ")}
               </p>
             </div>
-            <a
-              href="mailto:info@vikvartech.com"
-              className="inline-flex min-h-14 items-center justify-center rounded-xl bg-white px-7 font-bold text-[#0a1b3d] transition hover:-translate-y-0.5"
-            >
-              Contact Vikvar
-            </a>
+
+            <div className="flex flex-col gap-4">
+              <a
+                href="mailto:info@vikvartech.com?subject=Business%20Enquiry"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold transition hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                <Mail className="h-5 w-5" aria-hidden="true" />
+                Send a business enquiry
+              </a>
+              <a
+                href="tel:+16094234288"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 py-3 font-semibold transition hover:bg-white/10 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Call Vikvar Technologies
+              </a>
+            </div>
           </div>
         </Container>
       </section>

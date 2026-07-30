@@ -78,8 +78,30 @@ const organizationSchema = {
   name: "Vikvar Technologies",
   url: siteUrl,
   email: "info@vikvartech.com",
+  telephone: "+1-609-423-4288",
   description:
     "Vikvar Technologies provides IT recruiting, staff augmentation, technology consulting, application development, offshore development, cloud, and DevOps services.",
+  address: [
+    {
+      "@type": "PostalAddress",
+      name: "VIKVAR Technologies LLC",
+      streetAddress: "5900 Balcones Drive, Suite 100",
+      addressLocality: "Austin",
+      addressRegion: "TX",
+      postalCode: "78731",
+      addressCountry: "US",
+    },
+    {
+      "@type": "PostalAddress",
+      name: "VIKVAR Technologies",
+      streetAddress:
+        "3rd Floor, KNR Square, Opp. The Platina, Gachibowli, Kondapur",
+      addressLocality: "Hyderabad",
+      addressRegion: "Telangana",
+      postalCode: "500032",
+      addressCountry: "IN",
+    },
+  ],
   areaServed: [
     { "@type": "Country", name: "United States" },
     { "@type": "Country", name: "India" },
