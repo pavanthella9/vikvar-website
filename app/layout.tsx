@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./animations.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SiteMotion } from "@/components/site-motion";
 import { SkipToContent } from "@/components/ui/SkipToContent";
 
 const inter = Inter({
@@ -139,10 +141,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className={inter.variable}>
         <SkipToContent />
         <SiteHeader />
+        <SiteMotion />
         <div id="main-content" tabIndex={-1}>
           {children}
         </div>
