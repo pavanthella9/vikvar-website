@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
   BriefcaseBusiness,
-  CheckCircle2,
+  Check,
   Code2,
   Globe2,
   Handshake,
@@ -10,7 +11,16 @@ import {
   SearchCheck,
   ShieldCheck,
   UsersRound,
+  Workflow,
 } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+export const metadata: Metadata = {
+  title: "Vikvar Technologies | IT Recruiting, Staffing & Technology Services",
+  description:
+    "Vikvar Technologies helps organizations hire IT talent, scale delivery teams, and execute technology initiatives through recruiting, staff augmentation, consulting, application development, offshore delivery, cloud, and DevOps services.",
+};
 
 const services = [
   {
@@ -18,56 +28,106 @@ const services = [
     number: "01",
     title: "IT Recruiting",
     description:
-      "Identify and engage qualified technology professionals through a structured, quality-focused recruitment process.",
+      "Find qualified technology professionals through focused sourcing, structured screening, and coordinated hiring support.",
     href: "/services/it-recruiting",
-    featured: true,
+    emphasis: "Primary service",
   },
   {
     icon: UsersRound,
     number: "02",
     title: "Staff Augmentation",
     description:
-      "Add experienced technology professionals to your teams with flexible engagement models aligned to project needs.",
+      "Add individual specialists or complete delivery teams with flexible engagement models aligned to changing priorities.",
     href: "/services/staff-augmentation",
-    featured: true,
+    emphasis: "Flexible capacity",
   },
   {
     icon: BriefcaseBusiness,
     number: "03",
     title: "Technology Consulting",
     description:
-      "Access experienced consultants who help plan, execute, and strengthen critical technology initiatives.",
+      "Strengthen strategy, architecture, modernization, delivery governance, and technology decision-making.",
     href: "/services/technology-consulting",
-    featured: true,
+    emphasis: "Business alignment",
   },
   {
     icon: Code2,
     number: "04",
     title: "Application Development",
     description:
-      "Design, build, modernize, and support business applications with scalable engineering teams.",
+      "Design, build, modernize, integrate, and support business applications with scalable engineering capability.",
     href: "/services/application-development",
-    featured: true,
+    emphasis: "Engineering delivery",
   },
   {
     icon: Globe2,
     number: "05",
     title: "Offshore Development",
     description:
-      "Build dedicated development teams that provide dependable delivery capacity and long-term continuity.",
+      "Establish dedicated offshore teams that provide delivery capacity, continuity, governance, and long-term value.",
     href: "/services/offshore-development",
-    featured: false,
+    emphasis: "Dedicated teams",
   },
   {
     icon: Layers3,
     number: "06",
     title: "Cloud & DevOps",
     description:
-      "Support cloud adoption, automation, deployment modernization, and reliable infrastructure operations.",
+      "Improve cloud foundations, deployment automation, platform operations, observability, and engineering reliability.",
     href: "/services/cloud-devops",
-    featured: false,
+    emphasis: "Supporting capability",
   },
-];
+] as const;
+
+const advantages = [
+  {
+    icon: SearchCheck,
+    title: "Requirement-led delivery",
+    description:
+      "We begin with the role, business outcome, delivery environment, and practical constraints—not a generic profile search.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality-focused evaluation",
+    description:
+      "Candidates and delivery approaches are reviewed for capability, communication, availability, and real role alignment.",
+  },
+  {
+    icon: Workflow,
+    title: "Flexible engagement models",
+    description:
+      "Use contract, permanent, contract-to-hire, staff augmentation, dedicated team, or project delivery models.",
+  },
+  {
+    icon: Handshake,
+    title: "Responsive partnership",
+    description:
+      "Clear communication, coordinated follow-up, and transparent ownership support faster and more reliable decisions.",
+  },
+] as const;
+
+const process = [
+  [
+    "01",
+    "Understand",
+    "Clarify the role, technical scope, business context, location, timeline, communication expectations, and delivery priorities.",
+  ],
+  [
+    "02",
+    "Identify",
+    "Source relevant professionals or define the right consulting and delivery capability for the requirement.",
+  ],
+  [
+    "03",
+    "Evaluate",
+    "Review technical or functional fit, experience, communication, availability, risk, and engagement alignment.",
+  ],
+  [
+    "04",
+    "Deliver",
+    "Coordinate interviews, selection, onboarding, governance, and ongoing delivery support.",
+  ],
+] as const;
 
 const engagementModels = [
   "Contract Staffing",
@@ -76,83 +136,71 @@ const engagementModels = [
   "Staff Augmentation",
   "Dedicated Teams",
   "Project Delivery",
-];
+] as const;
 
 const industries = [
-  "Financial Services",
-  "Healthcare",
-  "Technology",
+  "Banking & Financial Services",
+  "Healthcare & Life Sciences",
   "Retail & E-commerce",
   "Manufacturing",
-  "Telecommunications",
-];
+  "Technology & SaaS",
+  "Logistics & Transportation",
+] as const;
 
-const process = [
-  {
-    step: "01",
-    title: "Understand",
-    text: "We clarify the role, technical requirements, project context, communication expectations, and business priorities.",
-  },
-  {
-    step: "02",
-    title: "Source",
-    text: "Our recruitment team identifies relevant professionals through targeted networks, referrals, and active outreach.",
-  },
-  {
-    step: "03",
-    title: "Evaluate",
-    text: "Candidates are reviewed for technical capability, experience, communication, availability, and role alignment.",
-  },
-  {
-    step: "04",
-    title: "Deliver",
-    text: "We present focused, interview-ready profiles and coordinate the process through selection and onboarding.",
-  },
-];
+const capabilities = [
+  "Java, .NET, Python & modern web",
+  "Cloud, DevOps & platform engineering",
+  "QA, automation & performance testing",
+  "Cybersecurity & infrastructure",
+  "SAP & enterprise applications",
+  "Data engineering, analytics & AI",
+] as const;
 
 export default function HomePage() {
   return (
     <main>
-      <section className="relative overflow-hidden bg-[#071a35] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(21,101,255,0.28),transparent_32%)]" />
-        <div className="absolute right-[-100px] top-24 h-[460px] w-[460px] rounded-full border border-white/10" />
-        <div className="absolute right-[-20px] top-44 h-[300px] w-[300px] rounded-full border border-white/10" />
+      <section className="relative overflow-hidden bg-[#071a3d] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_83%_18%,rgba(21,101,255,0.48),transparent_36%)]" />
+        <div className="absolute -right-32 top-16 h-[520px] w-[520px] rounded-full border border-white/10" />
+        <div className="absolute right-0 top-40 h-[320px] w-[320px] rounded-full border border-white/10" />
 
-        <div className="site-container relative grid min-h-[720px] items-center gap-14 py-24 lg:grid-cols-[1.12fr_0.88fr] lg:py-28">
+        <Container className="relative grid min-h-[760px] items-center gap-14 py-24 lg:grid-cols-[1.08fr_0.92fr] lg:py-28">
           <div>
-            <span className="eyebrow eyebrow-dark">
-              IT Recruiting · Staff Augmentation · Consulting
-            </span>
-
-            <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.04] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-300">
+              IT Recruiting · Staff Augmentation · Technology Services
+            </p>
+            <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.03] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
               Build the technology team your business needs.
             </h1>
-
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              Vikvar Technologies connects organizations with qualified IT
-              professionals and delivers flexible staffing, consulting, and
-              application development solutions built around real business
-              requirements.
+              Vikvar Technologies helps organizations hire qualified IT professionals, scale
+              delivery capacity, and execute technology initiatives through flexible, business-led
+              engagement models.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact" className="button button-primary">
-                Hire IT Talent
-                <ArrowRight size={18} />
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[#1565ff] px-7 font-bold text-white transition hover:-translate-y-0.5 hover:bg-blue-500"
+              >
+                Hire IT Talent <ArrowRight size={18} />
               </Link>
-              <Link href="/services" className="button button-secondary-dark">
-                Explore Services
+              <Link
+                href="/contact"
+                className="inline-flex min-h-14 items-center justify-center rounded-xl border border-white/25 px-7 font-bold text-white transition hover:bg-white/10"
+              >
+                Request Consultation
               </Link>
             </div>
 
-            <div className="mt-12 grid max-w-2xl gap-4 border-t border-white/15 pt-7 sm:grid-cols-3">
+            <div className="mt-12 grid max-w-2xl gap-5 border-t border-white/15 pt-7 sm:grid-cols-3">
               {[
-                ["Quality-first", "Candidate screening"],
+                ["Quality-first", "Candidate evaluation"],
                 ["Flexible", "Engagement models"],
-                ["Responsive", "Client delivery"],
-              ].map(([strong, label]) => (
-                <div key={strong}>
-                  <p className="text-lg font-semibold">{strong}</p>
+                ["Responsive", "Delivery support"],
+              ].map(([title, label]) => (
+                <div key={title}>
+                  <p className="text-lg font-bold">{title}</p>
                   <p className="mt-1 text-sm text-slate-400">{label}</p>
                 </div>
               ))}
@@ -160,266 +208,262 @@ export default function HomePage() {
           </div>
 
           <div className="relative hidden lg:block">
-            <div className="relative ml-auto max-w-[470px] rounded-[32px] border border-white/15 bg-white/[0.07] p-7 shadow-2xl backdrop-blur">
-              <div className="rounded-[24px] bg-white p-8 text-[#0a1b3d]">
+            <div className="ml-auto max-w-[480px] rounded-[30px] border border-white/15 bg-white/8 p-7 shadow-2xl backdrop-blur">
+              <div className="rounded-[24px] bg-white p-8 text-[#081a3a]">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
-                    Talent Delivery
+                  <span className="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">
+                    Talent delivery
                   </span>
-                  <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                  <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-700">
                     Vikvar
                   </span>
                 </div>
-
-                <h2 className="mt-8 text-3xl font-semibold tracking-[-0.03em]">
-                  The right professionals. A focused hiring process.
+                <h2 className="mt-7 text-3xl font-bold tracking-[-0.035em]">
+                  Relevant professionals. A focused hiring process.
                 </h2>
-
-                <div className="mt-8 space-y-4">
+                <div className="mt-7 space-y-4">
                   {[
                     "Requirement-driven sourcing",
                     "Technical and communication screening",
-                    "Relevant, interview-ready profiles",
+                    "Focused, interview-ready profiles",
                     "Coordinated onboarding support",
                   ].map((item) => (
                     <div
                       key={item}
                       className="flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-4"
                     >
-                      <CheckCircle2 className="text-blue-600" size={20} />
-                      <span className="text-sm font-medium">{item}</span>
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-blue-700">
+                        <Check size={16} strokeWidth={3} />
+                      </span>
+                      <span className="text-sm font-semibold">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="absolute -bottom-8 -left-12 rounded-2xl border border-white/15 bg-[#10284e] p-5 shadow-xl">
+              <div className="absolute -bottom-8 -left-10 rounded-2xl border border-white/15 bg-[#10284e] p-5 shadow-xl">
                 <div className="flex items-center gap-4">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-blue-500">
-                    <Handshake size={24} />
-                  </div>
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-blue-500">
+                    <Handshake size={23} />
+                  </span>
                   <div>
-                    <p className="text-sm font-semibold">Partnership-led</p>
-                    <p className="mt-1 text-xs text-slate-400">
-                      Built for long-term value
-                    </p>
+                    <p className="text-sm font-bold">Partnership-led</p>
+                    <p className="mt-1 text-xs text-slate-400">Built for long-term value</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="section bg-white">
-        <div className="site-container">
-          <div className="grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <span className="eyebrow">What we do</span>
-              <h2 className="section-title mt-5">
-                Talent and technology services that move work forward.
-              </h2>
-            </div>
-            <p className="section-copy lg:ml-auto lg:max-w-xl">
-              Our primary strength is helping organizations find and engage
-              technology talent. We also provide consulting and engineering
-              capabilities for clients that need complete delivery support.
-            </p>
-          </div>
+      <section className="bg-white py-20 sm:py-28">
+        <Container>
+          <SectionHeading
+            eyebrow="Core services"
+            title="Talent and technology services designed to move critical work forward."
+            description="Our strongest focus is IT recruiting and team augmentation. Consulting, engineering, offshore delivery, cloud, and DevOps capabilities provide complete support when clients need broader execution capacity."
+          />
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <Link
-                  href={service.href}
-                  key={service.title}
-                  className={`group rounded-[24px] border p-7 transition duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                    service.featured
-                      ? "border-slate-200 bg-white"
-                      : "border-slate-200 bg-slate-50"
-                  }`}
-                >
-                  <div className="flex items-start justify-between">
-                    <div
-                      className={`grid h-13 w-13 place-items-center rounded-2xl ${
-                        service.featured
-                          ? "bg-blue-600 text-white"
-                          : "bg-white text-blue-700"
-                      }`}
-                    >
-                      <Icon size={24} />
-                    </div>
-                    <span className="text-sm font-semibold text-slate-400">
-                      {service.number}
-                    </span>
-                  </div>
-                  <h3 className="mt-8 text-2xl font-semibold tracking-[-0.025em] text-[#0a1b3d]">
-                    {service.title}
-                  </h3>
-                  <p className="mt-4 min-h-24 leading-7 text-slate-600">
-                    {service.description}
-                  </p>
-                  <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
-                    Learn more
-                    <ArrowRight
-                      size={16}
-                      className="transition group-hover:translate-x-1"
-                    />
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ icon: Icon, number, title, description, href, emphasis }) => (
+              <Link
+                key={title}
+                href={href}
+                className="group rounded-2xl border border-slate-200 bg-white p-7 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5"
+              >
+                <div className="flex items-start justify-between">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-blue-700 transition group-hover:bg-blue-700 group-hover:text-white">
+                    <Icon size={23} />
                   </span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section bg-[#f3f6fb]">
-        <div className="site-container grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <span className="eyebrow">Flexible partnerships</span>
-            <h2 className="section-title mt-5">
-              Choose an engagement model that fits your objective.
-            </h2>
-            <p className="section-copy mt-6 max-w-xl">
-              From a critical individual hire to an extended delivery team,
-              Vikvar adapts its approach to your timelines, skills requirements,
-              and operating model.
-            </p>
-            <Link href="/contact" className="button button-dark mt-9">
-              Discuss Your Requirement
-              <ArrowRight size={18} />
-            </Link>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {engagementModels.map((model, index) => (
-              <div
-                key={model}
-                className="flex min-h-28 items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-blue-50 text-sm font-bold text-blue-700">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="font-semibold text-[#0a1b3d]">{model}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section bg-white">
-        <div className="site-container">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="eyebrow">Our recruiting process</span>
-            <h2 className="section-title mt-5">
-              A disciplined process designed around relevance and quality.
-            </h2>
-          </div>
-
-          <div className="mt-14 grid gap-6 lg:grid-cols-4">
-            {process.map((item) => (
-              <div
-                key={item.step}
-                className="relative rounded-[24px] border border-slate-200 p-7"
-              >
-                <span className="text-5xl font-semibold tracking-[-0.05em] text-blue-100">
-                  {item.step}
-                </span>
-                <h3 className="mt-6 text-xl font-semibold text-[#0a1b3d]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-slate-600">
-                  {item.text}
+                  <span className="text-sm font-bold tracking-[0.14em] text-slate-400">
+                    {number}
+                  </span>
+                </div>
+                <p className="mt-7 text-xs font-bold uppercase tracking-[0.14em] text-blue-700">
+                  {emphasis}
                 </p>
-              </div>
+                <h2 className="mt-3 text-2xl font-bold tracking-[-0.025em] text-[#081a3a]">
+                  {title}
+                </h2>
+                <p className="mt-4 min-h-24 leading-7 text-slate-600">{description}</p>
+                <span className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-blue-700">
+                  Explore service
+                  <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="section bg-[#071a35] text-white">
-        <div className="site-container grid items-center gap-14 lg:grid-cols-2">
-          <div>
-            <span className="eyebrow eyebrow-dark">Why Vikvar</span>
-            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">
-              More than profiles. A dependable talent and delivery partner.
-            </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-              We combine recruitment discipline, technology understanding, and
-              responsive account management to help clients build capable teams
-              without unnecessary complexity.
-            </p>
-          </div>
+      <section className="bg-slate-50 py-20 sm:py-28">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+            <SectionHeading
+              eyebrow="Why Vikvar"
+              title="A dependable partner for technology talent and delivery."
+              description="We combine recruitment discipline, technology understanding, and responsive account management to reduce noise and improve execution."
+            />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              [ShieldCheck, "Quality-focused screening"],
-              [SearchCheck, "Requirement-led sourcing"],
-              [UsersRound, "Flexible workforce models"],
-              [Handshake, "Transparent collaboration"],
-            ].map(([Icon, title]) => {
-              const FeatureIcon = Icon as typeof ShieldCheck;
-              return (
-                <div
-                  key={title as string}
-                  className="rounded-2xl border border-white/10 bg-white/[0.06] p-6"
-                >
-                  <FeatureIcon size={26} className="text-blue-400" />
-                  <h3 className="mt-5 font-semibold">{title as string}</h3>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section bg-white">
-        <div className="site-container">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <span className="eyebrow">Industries</span>
-              <h2 className="section-title mt-5">
-                Technology talent for complex business environments.
-              </h2>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {industries.map((industry) => (
-                <div
-                  key={industry}
-                  className="flex items-center justify-between rounded-2xl border border-slate-200 px-6 py-5"
-                >
-                  <span className="font-semibold text-[#0a1b3d]">
-                    {industry}
+            <div className="grid gap-5 sm:grid-cols-2">
+              {advantages.map(({ icon: Icon, title, description }) => (
+                <article key={title} className="rounded-2xl border border-slate-200 bg-white p-6">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#081a3a] text-white">
+                    <Icon size={21} />
                   </span>
-                  <ArrowRight size={17} className="text-blue-600" />
-                </div>
+                  <h2 className="mt-5 text-xl font-bold text-[#081a3a]">{title}</h2>
+                  <p className="mt-3 text-sm leading-6 text-slate-600">{description}</p>
+                </article>
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="pb-24 pt-6 sm:pb-28">
-        <div className="site-container">
-          <div className="overflow-hidden rounded-[32px] bg-blue-600 px-7 py-14 text-white sm:px-12 lg:flex lg:items-center lg:justify-between lg:px-16">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100">
-                Start a conversation
-              </p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Looking for IT talent or a technology delivery partner?
-              </h2>
-            </div>
+      <section className="bg-white py-20 sm:py-28">
+        <Container>
+          <SectionHeading
+            eyebrow="Engagement models"
+            title="Scale from one critical hire to a complete delivery team."
+            description="Select a model based on urgency, duration, ownership, budget, location, and the level of delivery responsibility your organization wants to retain."
+            align="center"
+          />
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {engagementModels.map((model, index) => (
+              <div
+                key={model}
+                className="flex min-h-28 items-center gap-4 rounded-2xl border border-slate-200 p-5"
+              >
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-blue-50 text-sm font-extrabold text-blue-700">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="font-bold text-[#081a3a]">{model}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-9 text-center">
             <Link
               href="/contact"
-              className="button mt-8 bg-white text-blue-700 hover:bg-blue-50 lg:mt-0"
+              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[#081a3a] px-7 font-bold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
             >
-              Contact Vikvar
-              <ArrowRight size={18} />
+              Discuss Your Requirement <ArrowRight size={18} />
             </Link>
           </div>
-        </div>
+        </Container>
+      </section>
+
+      <section className="bg-[#071a3d] py-20 text-white sm:py-28">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-300">
+                Recruitment process
+              </p>
+              <h2 className="mt-4 text-4xl font-bold tracking-[-0.035em] sm:text-5xl">
+                A disciplined process built around relevance and quality.
+              </h2>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+                Every engagement begins with understanding the real requirement and ends with
+                coordinated delivery—not simply forwarding profiles.
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {process.map(([number, title, description]) => (
+                <article key={number} className="rounded-2xl border border-white/12 bg-white/6 p-7">
+                  <span className="text-sm font-extrabold tracking-[0.18em] text-cyan-300">
+                    {number}
+                  </span>
+                  <h3 className="mt-4 text-xl font-bold">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-20 sm:py-28">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <SectionHeading
+                eyebrow="Industries"
+                title="Technology talent for complex business environments."
+                description="Our approach adapts to industry-specific operating models, security expectations, compliance needs, customer experiences, and delivery pressures."
+              />
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {industries.map((industry) => (
+                  <Link
+                    key={industry}
+                    href="/industries"
+                    className="flex items-center justify-between rounded-xl border border-slate-200 px-5 py-4 font-semibold text-[#081a3a] transition hover:border-blue-300 hover:bg-blue-50"
+                  >
+                    {industry}
+                    <ArrowRight size={16} className="text-blue-700" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[28px] bg-slate-50 p-7 sm:p-9">
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-700">
+                Technology expertise
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em] text-[#081a3a]">
+                Capability across modern and enterprise technology.
+              </h2>
+              <p className="mt-4 leading-7 text-slate-600">
+                Vikvar supports recruiting and delivery requirements across software engineering,
+                infrastructure, enterprise platforms, security, quality, and data.
+              </p>
+              <div className="mt-7 space-y-3">
+                {capabilities.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-4"
+                  >
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-blue-100 text-blue-700">
+                      <Check size={14} strokeWidth={3} />
+                    </span>
+                    <span className="text-sm font-semibold text-[#081a3a]">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-slate-50 py-20 sm:py-24">
+        <Container>
+          <div className="relative overflow-hidden rounded-[32px] bg-[#1565ff] px-7 py-14 text-white sm:px-10 lg:px-14">
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-300/30 blur-3xl" />
+            <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-white/75">
+                  Start a conversation
+                </p>
+                <h2 className="mt-4 max-w-3xl text-4xl font-bold tracking-[-0.035em] sm:text-5xl">
+                  Looking for IT talent or a technology delivery partner?
+                </h2>
+                <p className="mt-5 max-w-2xl leading-7 text-blue-50">
+                  Share your requirement, timeline, preferred engagement model, and the outcome your
+                  organization needs to achieve.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-14 items-center justify-center rounded-xl bg-white px-7 font-bold text-[#0a1b3d] transition hover:-translate-y-0.5"
+              >
+                Contact Vikvar
+              </Link>
+            </div>
+          </div>
+        </Container>
       </section>
     </main>
   );
