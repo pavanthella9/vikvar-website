@@ -1,0 +1,55 @@
+BUNDLE 51–55: NEXT.CONFIG MERGE EXAMPLE
+
+Do not replace your existing next.config file blindly.
+
+1. Find the configuration file in the project root. It may be:
+
+- next.config.ts
+- next.config.mjs
+- next.config.js
+
+2. For next.config.ts, add:
+
+import type { NextConfig } from "next";
+import { securityHeaders } from "./lib/security-headers";
+
+3. Inside the existing config object, add or merge:
+
+poweredByHeader: false,
+
+async headers() {
+  return [
+    {
+      source: "/(.*)",
+      headers: securityHeaders,
+    },
+  ];
+},
+
+FULL MINIMAL EXAMPLE
+
+import type { NextConfig } from "next";
+import { securityHeaders } from "./lib/security-headers";
+
+const nextConfig: NextConfig = {
+  poweredByHeader: false,
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
+
+IMPORTANT
+
+- Preserve every existing option in your config.
+- If headers() already exists, merge the security rule into its returned array.
+- Do not add Strict-Transport-Security during local development.
+- Add HSTS only after HTTPS production hosting is verified.
+- A strict Content-Security-Policy is intentionally deferred because the current homepage still loads remote Unsplash images and may use third-party form or analytics services.
