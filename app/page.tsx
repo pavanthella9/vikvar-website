@@ -14,12 +14,16 @@ import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/enterprise/CTASection";
 import { FeatureCard } from "@/components/enterprise/FeatureCard";
 import { ProcessTimeline } from "@/components/enterprise/ProcessTimeline";
-import { TechnologyBadge } from "@/components/enterprise/TechnologyBadge";
 import { MediaImage } from "@/components/media/MediaImage";
 import { HomeMediaShowcase } from "@/components/media/HomeMediaShowcase";
 import { vikvarMedia } from "@/components/media/media-library";
+import { DeliveryModels } from "@/components/production/DeliveryModels";
+import { GlobalDeliveryMap } from "@/components/production/GlobalDeliveryMap";
+import { TechnologyGrid } from "@/components/production/TechnologyGrid";
+import { TrustSignals } from "@/components/production/TrustSignals";
 import "./bundle-30-32.css";
 import "./media-enhancement.css";
+import "./production-ui.css";
 
 export const metadata: Metadata = {
   title: "IT Recruiting, Staff Augmentation & Technology Consulting",
@@ -99,25 +103,6 @@ const process = [
       "Review progress, manage risks, refine priorities, and support the next phase of the engagement.",
   },
 ];
-
-const technologies = [
-  "Java",
-  ".NET",
-  "Python",
-  "React",
-  "Node.js",
-  "AWS",
-  "Azure",
-  "Docker",
-  "Kubernetes",
-  "Terraform",
-  "SAP",
-  "QA",
-  "Cybersecurity",
-  "Mobile",
-];
-
-const regions = ["United States", "India", "UAE", "Singapore", "Malaysia"];
 
 export default function HomePage() {
   return (
@@ -202,12 +187,14 @@ export default function HomePage() {
       </section>
 
       <HomeMediaShowcase />
+      <DeliveryModels />
+      <TrustSignals />
 
       <section className="v-section v-section-ink">
         <Container>
           <div className="v-outcome-layout">
             <div>
-              <p className="v-eyebrow">Why Vikvar</p>
+              <p className="v-eyebrow">Delivery Principles</p>
               <h2>A practical, transparent approach built around your priorities</h2>
               <p className="v-muted">
                 We focus on clear requirements, accountable communication, and
@@ -231,7 +218,7 @@ export default function HomePage() {
                 ],
                 [
                   "Global perspective",
-                  "Support across the United States, India, UAE, Singapore, Malaysia, and other markets by engagement.",
+                  "Support across international markets based on each engagement’s structure and requirements.",
                 ],
               ].map(([title, description]) => (
                 <article key={title}>
@@ -261,47 +248,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="v-section v-tech-section">
-        <Container>
-          <div className="v-tech-layout">
-            <div>
-              <p className="v-eyebrow v-eyebrow-dark">Technology Coverage</p>
-              <h2>Capabilities across modern and enterprise environments</h2>
-              <p>
-                Technology coverage is aligned to each requirement and may
-                include application engineering, platforms, cloud, automation,
-                quality, security, and mobile delivery.
-              </p>
-            </div>
-            <div className="v-tech-cloud">
-              {technologies.map((technology) => (
-                <TechnologyBadge key={technology}>{technology}</TechnologyBadge>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="v-section">
-        <Container>
-          <div className="v-global-card">
-            <div>
-              <p className="v-eyebrow">Global Reach</p>
-              <h2>Supporting cross-border talent and technology requirements</h2>
-              <p>
-                Our delivery perspective spans key international markets while
-                remaining flexible to the structure and location of each
-                engagement.
-              </p>
-            </div>
-            <div className="v-region-list">
-              {regions.map((region) => (
-                <span key={region}>{region}</span>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+      <TechnologyGrid />
+      <GlobalDeliveryMap />
 
       <CTASection
         eyebrow="Start a Conversation"
