@@ -15,7 +15,11 @@ import { CTASection } from "@/components/enterprise/CTASection";
 import { FeatureCard } from "@/components/enterprise/FeatureCard";
 import { ProcessTimeline } from "@/components/enterprise/ProcessTimeline";
 import { TechnologyBadge } from "@/components/enterprise/TechnologyBadge";
+import { MediaImage } from "@/components/media/MediaImage";
+import { HomeMediaShowcase } from "@/components/media/HomeMediaShowcase";
+import { vikvarMedia } from "@/components/media/media-library";
 import "./bundle-30-32.css";
+import "./media-enhancement.css";
 
 export const metadata: Metadata = {
   title: "IT Recruiting, Staff Augmentation & Technology Consulting",
@@ -161,35 +165,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            <aside className="v-hero-panel" data-theme="dark">
-              <p className="v-panel-label">How we support clients</p>
-              <div className="v-panel-list">
-                <div>
-                  <strong>Talent acquisition</strong>
-                  <span>
-                    Role definition, sourcing, screening, coordination, and
-                    onboarding support.
-                  </span>
-                </div>
-                <div>
-                  <strong>Delivery capacity</strong>
-                  <span>
-                    Individual professionals, extended teams, consulting, and
-                    offshore delivery.
-                  </span>
-                </div>
-                <div>
-                  <strong>Technology execution</strong>
-                  <span>
-                    Applications, modernisation, cloud foundations, automation,
-                    and operational improvement.
-                  </span>
-                </div>
+            <aside className="v-hero-media">
+              <MediaImage media={vikvarMedia.teamOffice} eager />
+              <div className="v-hero-media-copy">
+                <span>Global capability</span>
+                <strong>Technology talent and delivery connected</strong>
+                <p>
+                  Recruiting, consulting, engineering, and distributed delivery
+                  aligned to one business objective.
+                </p>
               </div>
-              <Link href="/case-studies" className="v-panel-link">
-                View representative scenarios
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
             </aside>
           </div>
         </Container>
@@ -215,6 +200,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <HomeMediaShowcase />
 
       <section className="v-section v-section-ink">
         <Container>
