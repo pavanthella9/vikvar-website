@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Vikvar Technologies mark</title>
+  <desc id="desc">A geometric letter V in a rounded blue square.</desc>
+  <defs>
+    <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06132f"/>
+      <stop offset=".62" stop-color="#0b2a62"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <path d="M27 31h20l17 42 17-42h20L73 97H55L27 31Z" fill="#fff"/>
+  <path d="M62 31h18L64 71 55 50l7-19Z" fill="#bfdbfe" opacity=".9"/>
+</svg>

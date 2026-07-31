@@ -1,0 +1,9 @@
+Production verification note
+
+The website already serves robots.txt and sitemap.xml through the Next.js App
+Router. After deployment, verify these exact URLs:
+
+https://vikvartech.com/robots.txt
+https://vikvartech.com/sitemap.xml
+
+This file is documentation only and is not used by search engines.

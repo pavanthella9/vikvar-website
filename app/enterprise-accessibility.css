@@ -1,0 +1,153 @@
+/* Vikvar Bundle 91–95
+   Global accessibility, typography, mobile and interaction refinements.
+*/
+
+:root {
+  --enterprise-focus: rgba(21, 94, 239, .42);
+  --enterprise-navy: #071a35;
+  --enterprise-blue: #155eef;
+  --enterprise-muted: #64748b;
+  --enterprise-line: #dce5f1;
+}
+
+html {
+  scroll-padding-top: 112px;
+}
+
+body {
+  overflow-x: clip;
+}
+
+main {
+  min-height: 55vh;
+}
+
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--enterprise-focus);
+  outline-offset: 3px;
+}
+
+:where(input, textarea, select) {
+  min-height: 48px;
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #0f172a;
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+:where(input, textarea)::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+:where(input, textarea, select):hover {
+  border-color: #94a3b8;
+}
+
+:where(input, textarea, select):focus {
+  border-color: var(--enterprise-blue);
+  box-shadow: 0 0 0 4px rgba(21, 94, 239, .1);
+}
+
+main :where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+main :where(p, li) {
+  text-wrap: pretty;
+}
+
+main :where(p, li, label, input, textarea, select) {
+  overflow-wrap: anywhere;
+}
+
+main a:not([class]) {
+  color: #1d4ed8;
+  text-decoration-thickness: 1px;
+}
+
+main a:not([class]):hover {
+  text-decoration: underline;
+}
+
+.back-to-top {
+  position: fixed;
+  right: clamp(1rem, 2vw, 1.5rem);
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  z-index: 70;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 999px;
+  background: #155eef;
+  color: white;
+  box-shadow: 0 16px 36px rgba(15,23,42,.2);
+  transition:
+    visibility .2s ease,
+    opacity .2s ease,
+    transform .2s ease,
+    background-color .2s ease;
+}
+
+.back-to-top-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #0f4ed1;
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 86px;
+  }
+
+  .site-container {
+    width: min(100% - 1.25rem, 1240px);
+  }
+
+  :where(button, a) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .back-to-top {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .back-to-top {
+    transition: none;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  nav,
+  .back-to-top {
+    display: none !important;
+  }
+
+  body,
+  main {
+    background: white !important;
+    color: black !important;
+  }
+}

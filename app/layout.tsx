@@ -4,10 +4,12 @@ import "./globals.css";
 import "./animations.css";
 import "./visual-polish.css";
 import "./site-polish.css";
+import "./enterprise-accessibility.css";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SiteMotion } from "@/components/site-motion";
 import { SkipToContent } from "@/components/ui/SkipToContent";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -152,6 +154,7 @@ export default function RootLayout({
           {children}
         </div>
         <SiteFooter />
+        <BackToTop />
 
         <script
           type="application/ld+json"

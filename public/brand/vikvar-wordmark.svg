@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 128" role="img" aria-labelledby="title desc">
+  <title id="title">Vikvar Technologies</title>
+  <desc id="desc">Vikvar Technologies brand wordmark.</desc>
+  <defs>
+    <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06132f"/>
+      <stop offset=".62" stop-color="#0b2a62"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="112" height="112" x="8" y="8" rx="25" fill="url(#bg)"/>
+  <path d="M31 35h18l15 37 15-37h18L72 94H56L31 35Z" fill="#fff"/>
+  <text x="145" y="66" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="49" font-weight="700" letter-spacing="-1.5">Vikvar</text>
+  <text x="147" y="94" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" letter-spacing="2.8">TECHNOLOGIES</text>
+</svg>

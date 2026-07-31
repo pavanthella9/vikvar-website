@@ -1,264 +1,191 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   BriefcaseBusiness,
-  CheckCircle2,
   CloudCog,
   Code2,
-  Globe2,
   Layers3,
+  TrendingUp,
+  UserPlus,
   UsersRound,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { CTASection } from "@/components/enterprise/CTASection";
-import { FeatureCard } from "@/components/enterprise/FeatureCard";
-import { ProcessTimeline } from "@/components/enterprise/ProcessTimeline";
-import { MediaImage } from "@/components/media/MediaImage";
 import { HomeMediaShowcase } from "@/components/media/HomeMediaShowcase";
-import { vikvarMedia } from "@/components/media/media-library";
 import { DeliveryModels } from "@/components/production/DeliveryModels";
 import { GlobalDeliveryMap } from "@/components/production/GlobalDeliveryMap";
 import { TechnologyGrid } from "@/components/production/TechnologyGrid";
 import { TrustSignals } from "@/components/production/TrustSignals";
-import "./bundle-30-32.css";
+import { CTASection } from "@/components/enterprise/CTASection";
+import { HomeTrustStrip } from "@/components/home/HomeTrustStrip";
+import { HomeCaseHighlights } from "@/components/home/HomeCaseHighlights";
+import { HomeInsights } from "@/components/home/HomeInsights";
+import { HomePremiumCTA } from "@/components/home/HomePremiumCTA";
+import { Reveal } from "@/components/ui/Reveal";
+import "./homepage-reference.css";
 import "./media-enhancement.css";
 import "./production-ui.css";
+import "./homepage-finishing.css";
+import "./premium-polish.css";
+import "./enterprise-polish.css";
 
 export const metadata: Metadata = {
-  title: "IT Recruiting, Staff Augmentation & Technology Consulting",
+  title: "IT Recruiting, Staffing & Digital Solutions",
   description:
-    "Vikvar Technologies provides IT recruiting, staff augmentation, technology consulting, application development, offshore delivery, cloud, and DevOps services.",
+    "Vikvar Technologies provides IT recruiting, staff augmentation, technology consulting, application development, offshore delivery, cloud and DevOps services.",
   alternates: { canonical: "/" },
 };
 
 const services = [
   {
-    title: "IT Recruiting",
+    title: "IT Recruiting & Staffing",
     description:
-      "Structured sourcing and screening for specialised technology roles across enterprise and digital skill areas.",
+      "We connect skilled technology professionals with organisations and help build teams aligned to real delivery needs.",
     href: "/services/it-recruiting",
-    icon: BriefcaseBusiness,
+    icon: UsersRound,
   },
   {
     title: "Staff Augmentation",
     description:
-      "Flexible access to professionals and delivery teams aligned to your priorities, technology environment, and timeline.",
+      "Scale your team with experienced professionals and flexible engagement models built around your priorities.",
     href: "/services/staff-augmentation",
-    icon: UsersRound,
+    icon: UserPlus,
   },
   {
     title: "Technology Consulting",
     description:
-      "Practical guidance across technology strategy, architecture, transformation, delivery planning, and operational improvement.",
+      "Practical strategy, architecture and delivery guidance for complex technology and transformation initiatives.",
     href: "/services/technology-consulting",
-    icon: Layers3,
+    icon: TrendingUp,
   },
   {
     title: "Application Development",
     description:
-      "Design, modernise, integrate, test, and support business applications with maintainable engineering practices.",
+      "Custom applications and modernisation services focused on performance, scalability and maintainability.",
     href: "/services/application-development",
     icon: Code2,
   },
   {
-    title: "Offshore Development",
-    description:
-      "Distributed engineering capacity supported by clear governance, collaboration, reporting, and delivery ownership.",
-    href: "/services/offshore-development",
-    icon: Globe2,
-  },
-  {
     title: "Cloud & DevOps",
     description:
-      "Cloud foundations, infrastructure automation, CI/CD, container platforms, reliability, and operational visibility.",
+      "Cloud foundations, automation and modern delivery practices that strengthen reliability and operational visibility.",
     href: "/services/cloud-devops",
     icon: CloudCog,
   },
 ];
 
-const process = [
-  {
-    number: "01",
-    title: "Understand",
-    description:
-      "Clarify the business objective, required capabilities, technology landscape, location, and delivery timeline.",
-  },
-  {
-    number: "02",
-    title: "Plan",
-    description:
-      "Define the engagement model, responsibilities, milestones, communication rhythm, and success criteria.",
-  },
-  {
-    number: "03",
-    title: "Deliver",
-    description:
-      "Execute through recruiting, augmentation, consulting, engineering, or distributed delivery workflows.",
-  },
-  {
-    number: "04",
-    title: "Improve",
-    description:
-      "Review progress, manage risks, refine priorities, and support the next phase of the engagement.",
-  },
-];
-
 export default function HomePage() {
   return (
-    <main className="v-home">
-      <section className="v-hero">
-        <div className="v-hero-grid" aria-hidden="true" />
+    <main id="main-content" className="reference-home">
+      <section className="reference-hero">
+        <div className="reference-hero-overlay" aria-hidden="true" />
+
         <Container>
-          <div className="v-hero-layout">
-            <div className="v-hero-copy">
-              <p className="v-eyebrow">Technology Talent & Delivery</p>
+          <div className="reference-hero-grid">
+            <div className="reference-hero-copy">
+              <p className="reference-eyebrow">Technology Talent & Delivery</p>
               <h1>
-                Build stronger technology teams and move critical initiatives
-                forward
+                Innovate. Build.
+                <br />
+                Transform.
               </h1>
-              <p className="v-hero-lead">
-                Vikvar Technologies helps organisations access specialised
-                technology talent, extend delivery capacity, and execute
-                consulting and engineering priorities across global markets.
+              <p>
+                We help organisations accelerate growth with IT recruiting,
+                staffing, consulting and digital solutions that drive practical
+                business outcomes.
               </p>
 
-              <div className="v-hero-actions">
-                <Link href="/contact" className="v-button v-button-primary">
-                  Discuss your requirement
+              <div className="reference-hero-actions">
+                <Link href="/services" className="reference-primary-button">
+                  Our Services
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
-                <Link
-                  href="/services/it-recruiting"
-                  className="v-button v-button-secondary"
-                >
-                  Explore our services
+                <Link href="/contact" className="reference-outline-button">
+                  Let&apos;s Talk
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-
-              <div className="v-trust-row" aria-label="Key service strengths">
-                {[
-                  "Specialised technology recruiting",
-                  "Flexible engagement models",
-                  "Global delivery support",
-                ].map((item) => (
-                  <span key={item}>
-                    <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
-                    {item}
-                  </span>
-                ))}
-              </div>
             </div>
 
-            <aside className="v-hero-media">
-              <MediaImage media={vikvarMedia.teamOffice} eager />
-              <div className="v-hero-media-copy">
-                <span>Global capability</span>
-                <strong>Technology talent and delivery connected</strong>
-                <p>
-                  Recruiting, consulting, engineering, and distributed delivery
-                  aligned to one business objective.
-                </p>
-              </div>
-            </aside>
+            <div className="reference-hero-brand">
+              <Image
+                src="/brand/vikvar-logo-primary.jpg"
+                alt="Vikvar Technologies — Innovate, Build, Transform"
+                width={1075}
+                height={300}
+                priority
+              />
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="v-section v-section-light">
+      <Reveal><HomeTrustStrip /></Reveal>
+
+      <Reveal delay={40}><section className="reference-services">
         <Container>
-          <div className="v-section-heading">
+          <div className="reference-section-heading">
             <div>
-              <p className="v-eyebrow v-eyebrow-dark">Core Capabilities</p>
-              <h2>Connected services for talent and technology delivery</h2>
+              <p className="reference-blue-label">What We Do</p>
+              <h2>End-to-End Solutions to Accelerate Your Business</h2>
             </div>
             <p>
-              Engage Vikvar for a focused requirement or combine multiple
-              capabilities into a coordinated delivery model.
+              From building high-performing teams to delivering scalable digital
+              solutions, we partner with organisations through every stage of
+              growth and transformation.
             </p>
           </div>
 
-          <div className="v-service-grid">
-            {services.map((service) => (
-              <FeatureCard key={service.title} {...service} />
+          <div className="reference-service-grid">
+            {services.map(({ title, description, href, icon: Icon }) => (
+              <Link href={href} className="reference-service-card" key={title}>
+                <Icon className="h-8 w-8" aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <span>
+                  Learn more
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </Link>
             ))}
           </div>
-        </Container>
-      </section>
 
-      <HomeMediaShowcase />
-      <DeliveryModels />
-      <TrustSignals />
-
-      <section className="v-section v-section-ink">
-        <Container>
-          <div className="v-outcome-layout">
+          <div className="reference-secondary-service">
+            <BriefcaseBusiness className="h-6 w-6" aria-hidden="true" />
             <div>
-              <p className="v-eyebrow">Delivery Principles</p>
-              <h2>A practical, transparent approach built around your priorities</h2>
-              <p className="v-muted">
-                We focus on clear requirements, accountable communication, and
-                flexible delivery rather than generic one-size-fits-all
-                solutions.
+              <strong>Offshore Development</strong>
+              <p>
+                Dedicated distributed engineering teams with clear governance,
+                communication and delivery ownership.
               </p>
             </div>
-            <div className="v-outcome-grid">
-              {[
-                [
-                  "Business-first discovery",
-                  "We begin with the outcome, constraints, ownership, and timeline—not only a list of technologies.",
-                ],
-                [
-                  "Flexible delivery models",
-                  "Choose recruiting, augmentation, consulting, project delivery, or distributed engineering support.",
-                ],
-                [
-                  "Technology breadth",
-                  "Access capabilities across applications, enterprise platforms, cloud, DevOps, QA, security, and mobile.",
-                ],
-                [
-                  "Global perspective",
-                  "Support across international markets based on each engagement’s structure and requirements.",
-                ],
-              ].map(([title, description]) => (
-                <article key={title}>
-                  <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
+            <Link href="/services/offshore-development">
+              Explore
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
         </Container>
-      </section>
+      </section></Reveal>
 
-      <section className="v-section">
-        <Container>
-          <div className="v-section-heading">
-            <div>
-              <p className="v-eyebrow v-eyebrow-dark">Engagement Process</p>
-              <h2>Clear from initial discussion through delivery</h2>
-            </div>
-            <p>
-              A simple process keeps priorities, ownership, communication, and
-              outcomes visible throughout the engagement.
-            </p>
-          </div>
-          <ProcessTimeline steps={process} />
-        </Container>
-      </section>
+      <Reveal delay={60}><HomeMediaShowcase /></Reveal>
+      <Reveal delay={80}><DeliveryModels /></Reveal>
+      <Reveal delay={100}><TrustSignals /></Reveal>
+      <Reveal delay={80}><TechnologyGrid /></Reveal>
+      <Reveal delay={90}><HomeCaseHighlights /></Reveal>
+      <Reveal delay={100}><HomeInsights /></Reveal>
+      <Reveal delay={110}><GlobalDeliveryMap /></Reveal>
 
-      <TechnologyGrid />
-      <GlobalDeliveryMap />
+      <HomePremiumCTA />
 
       <CTASection
         eyebrow="Start a Conversation"
         title="Tell us what your organisation needs to accomplish"
-        description="Share your hiring, team expansion, consulting, application, offshore, cloud, or DevOps requirement with Vikvar Technologies."
+        description="Share your recruiting, staffing, consulting, application, offshore, cloud or DevOps requirement with Vikvar Technologies."
         primaryLabel="Contact our team"
         primaryHref="/contact"
-        secondaryLabel="Explore case studies"
-        secondaryHref="/case-studies"
+        secondaryLabel="Explore our services"
+        secondaryHref="/services"
       />
     </main>
   );
