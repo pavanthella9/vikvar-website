@@ -1,27 +1,11 @@
 import type { MetadataRoute } from "next";
-
-const baseUrl = "https://vikvartech.com";
+import { caseStudies } from "@/components/case-studies/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/about",
-    "/services/it-recruiting",
-    "/services/staff-augmentation",
-    "/services/technology-consulting",
-    "/services/application-development",
-    "/services/offshore-development",
-    "/services/cloud-devops",
-    "/industries",
-    "/careers",
-    "/contact",
-    "/privacy",
+  const base = "https://vikvartech.com";
+  const routes = ["", "/about", "/industries", "/careers", "/contact", "/privacy", "/terms", "/faq", "/resources", "/testimonials", "/case-studies", "/services/it-recruiting", "/services/staff-augmentation", "/services/technology-consulting", "/services/application-development", "/services/offshore-development", "/services/cloud-devops"];
+  return [
+    ...routes.map((route) => ({ url: `${base}${route}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: route === "" ? 1 : 0.7 })),
+    ...caseStudies.map((study) => ({ url: `${base}/case-studies/${study.slug}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 }))
   ];
-
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : route.startsWith("/services/") ? 0.9 : 0.8,
-  }));
 }
